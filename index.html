@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Amma's Kitchen — அம்மாவின் சமையல்</title>
+<style>
+  :root { --ink:#3a2f28; --paper:#faf6ef; --card:#fffdf8; --accent:#b3541e; --soft:#8a7a6d; --line:#e8dfd2; }
+  * { box-sizing:border-box; }
+  body { margin:0; font:16px/1.6 Georgia,'Times New Roman',serif; color:var(--ink); background:var(--paper); }
+  header { padding:2.5rem 2rem 1.5rem; border-bottom:3px double var(--accent); text-align:center; }
+  header h1 { margin:0; font-size:2.2rem; } header h1 .ta { color:var(--accent); font-size:1.4rem; display:block; }
+  header p { color:var(--soft); max-width:42rem; margin:.7rem auto 0; font-size:.92rem; }
+  .layout { display:flex; gap:0; max-width:1200px; margin:0 auto; align-items:flex-start; }
+  nav { width:300px; flex-shrink:0; position:sticky; top:0; max-height:100vh; overflow-y:auto; padding:1.2rem; border-right:1px solid var(--line); }
+  nav h3 { font-size:.8rem; text-transform:uppercase; letter-spacing:.08em; color:var(--accent); margin:1.1rem 0 .3rem; }
+  nav ul { list-style:none; margin:0; padding:0; } nav li { font-size:.88rem; padding:.12rem 0; }
+  nav a { color:var(--ink); text-decoration:none; } nav a:hover { color:var(--accent); }
+  .part2 { color:#b9ad9f; } .tag { font-size:.65rem; border:1px solid #d8cdbd; border-radius:8px; padding:0 .4em; vertical-align:1px; }
+  #search { width:100%; padding:.5rem .7rem; font:inherit; font-size:.9rem; border:1px solid var(--line); border-radius:6px; background:var(--card); }
+  main { flex:1; padding:1.5rem 2rem; min-width:0; }
+  .cat-title { color:var(--accent); border-bottom:1px solid var(--line); padding-bottom:.3rem; margin-top:2.5rem; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:1.3rem 1.6rem; margin:1.2rem 0; box-shadow:0 1px 3px rgba(58,47,40,.06); }
+  .card h2 { margin:0 0 .6rem; font-size:1.3rem; } .card .ta { color:var(--accent); font-weight:normal; font-size:1.05rem; margin-left:.4rem; }
+  .num { color:var(--soft); font-size:.85rem; vertical-align:2px; margin-right:.3rem; }
+  .cols { display:flex; gap:2rem; flex-wrap:wrap; }
+  .ing { flex:1 1 220px; } .steps { flex:2 1 360px; }
+  .card h4 { margin:.4rem 0 .3rem; text-transform:uppercase; font-size:.75rem; letter-spacing:.08em; color:var(--soft); }
+  .card ul, .card ol { margin:.2rem 0; padding-left:1.2rem; } .card li { margin:.25rem 0; }
+  .notes { font-style:italic; color:var(--soft); border-top:1px dashed var(--line); padding-top:.6rem; margin:.9rem 0 0; }
+  .hidden { display:none; }
+  @media (max-width: 800px) { .layout { flex-direction:column; } nav { position:static; width:100%; max-height:none; border-right:0; border-bottom:1px solid var(--line); } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Amma's Kitchen <span class="ta">அம்மாவின் சமையல்</span></h1>
+  <p>Handwritten notebook — Amma Recipes Part 1 (31-page scan). A 'tumbler' (டம்ளர்) is roughly 1 cup / 200–250 ml. Spoon sizes are Amma's kitchen spoons.</p>
+</header>
+<div class="layout">
+  <nav>
+    <input id="search" type="search" placeholder="Search recipes… (English or தமிழ்)" autocomplete="off">
+    
+  <div class="toc-group">
+    <h3>Sweets &amp; Kesari</h3>
+    <ul><li class="toc-item" data-name="rava kesari ரவா கேசரி"><a href="#r1">1. Rava Kesari</a></li><li class="toc-item" data-name="semiya kesari சேமியா கேசரி"><a href="#r2">2. Semiya Kesari</a></li><li class="toc-item" data-name="aval kesari அவல் கேசரி"><a href="#r3">3. Aval Kesari</a></li><li class="toc-item" data-name="badam cake பாதாம் கேக்"><a href="#r10">10. Badam Cake</a></li><li class="toc-item" data-name="carrot halwa கேரட் அல்வா"><a href="#r12">12. Carrot Halwa</a></li><li class="toc-item" data-name="thiruvathirai kali திருவாதிரை களி"><a href="#r19">19. Thiruvathirai Kali</a></li><li class="toc-item" data-name="sweet karakkari ஸ்வீட் காரக்கறி"><a href="#r29">29. Sweet Karakkari</a></li><li class="toc-item" data-name="poosani kova halwa பூசணி கோவா அல்வா"><a href="#r32">32. Poosani Kova Halwa</a></li><li class="toc-item part2" data-name="athrasam அத்ரசம்">68. Athrasam <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="kaadi paruppu poli காடி பருப்பு போலி">91. Kaadi Paruppu Poli <span class="tag">Part 2</span></li></ul>
+  </div>
+  <div class="toc-group">
+    <h3>Payasams</h3>
+    <ul><li class="toc-item" data-name="paal payasam பால் பாயசம்"><a href="#r4">4. Paal Payasam</a></li><li class="toc-item" data-name="javvarisi payasam ஜவ்வரிசி பாயசம்"><a href="#r5">5. Javvarisi Payasam</a></li><li class="toc-item" data-name="aval payasam அவல் பாயசம்"><a href="#r6">6. Aval Payasam</a></li><li class="toc-item" data-name="rava payasam ரவா பாயசம்"><a href="#r7">7. Rava Payasam</a></li><li class="toc-item" data-name="semiya payasam சேமியா பாயசம்"><a href="#r8">8. Semiya Payasam</a></li><li class="toc-item" data-name="badam kheer பாதாம் கீர்"><a href="#r9">9. Badam Kheer</a></li><li class="toc-item" data-name="carrot payasam கேரட் பாயசம்"><a href="#r11">11. Carrot Payasam</a></li><li class="toc-item" data-name="payatham paruppu vella payasam பயத்தம்பருப்பு வெல்ல பாயசம்"><a href="#r13">13. Payatham Paruppu Vella Payasam</a></li></ul>
+  </div>
+  <div class="toc-group">
+    <h3>Kuzhambu &amp; Sambar</h3>
+    <ul><li class="toc-item" data-name="sambar சாம்பார்"><a href="#r15">15. Sambar</a></li><li class="toc-item" data-name="thiruvathirai sambar திருவாதிரை சாம்பார்"><a href="#r18">18. Thiruvathirai Sambar</a></li><li class="toc-item" data-name="vathal idumbu வற்றல் இடிம்பு"><a href="#r20">20. Vathal Idumbu</a></li><li class="toc-item" data-name="poritha idumbu allathu katti பொரித்த இடிம்பு அல்லது கட்டி"><a href="#r21">21. Poritha Idumbu Allathu Katti</a></li><li class="toc-item" data-name="payatham paruppu potta katti பயத்தம் பருப்பு போட்ட கட்டி"><a href="#r22">22. Payatham Paruppu Potta Katti</a></li><li class="toc-item" data-name="ilavaikkai poritha idumbu இலவைக்காய் பொரித்த இடிம்பு"><a href="#r23">23. Ilavaikkai Poritha Idumbu</a></li><li class="toc-item" data-name="pushanikkai katti பூசணிக்காய் கட்டி"><a href="#r24">24. Pushanikkai Katti</a></li><li class="toc-item" data-name="kothavarangai katti கொத்தவரங்காய் கட்டி"><a href="#r25">25. Kothavarangai Katti</a></li><li class="toc-item" data-name="kaya rasam காயரசம்"><a href="#r43">43. Kaya Rasam</a></li><li class="toc-item" data-name="puli kichadi (with pachai milagai) புளி கிச்சடி பச்சைமிளகாய்"><a href="#r45">45. Puli Kichadi (with Pachai Milagai)</a></li><li class="toc-item part2" data-name="murungaikai charu முருங்காய்ச்சாறு">63. Murungaikai Charu <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="puli masala புளி மசாலா">67. Puli Masala <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="veppampoo rasam வேப்பம்பூ ரசம்">98. Veppampoo Rasam <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="milagu kuzhambu &amp; karuvepilai kuzhambu மிளகு கொழம்பு &amp; கருவேப்பிலை கொழம்பு">100. Milagu Kuzhambu &amp; Karuvepilai Kuzhambu <span class="tag">Part 2</span></li></ul>
+  </div>
+  <div class="toc-group">
+    <h3>Kootu, Usili &amp; Curries</h3>
+    <ul><li class="toc-item" data-name="pagarkkai pirattal பாகற்காய் பிரட்டல்"><a href="#r17">17. Pagarkkai Pirattal</a></li><li class="toc-item" data-name="beans, kos, vazhaithandu, avarakkai, pudalankai kari பீன்ஸ், கோஸ், வாழைத்தண்டு, அவரைக்காய், புடலங்காய் கறிகள்"><a href="#r26">26. Beans, Kos, Vazhaithandu, Avarakkai, Pudalankai Kari</a></li><li class="toc-item" data-name="paruppu usili பருப்பு உசிலி"><a href="#r27">27. Paruppu Usili</a></li><li class="toc-item" data-name="pachadi vagaigal பச்சடி வகைகள்"><a href="#r41">41. Pachadi Vagaigal</a></li><li class="toc-item" data-name="mangai pachadi மாங்காய் பச்சடி"><a href="#r42">42. Mangai Pachadi</a></li><li class="toc-item part2" data-name="vengaya mandhamum kothu [unclear] வெங்கயக்கி மண்டமும் கொத்து">59. Vengaya Mandhamum Kothu [unclear] <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="usili உசிலி">60. Usili <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="pidi karunai masiyal பிடி கருணை மசியல்">66. Pidi Karunai Masiyal <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="cauliflower poriyal cauliflower போரியல்">69. Cauliflower Poriyal <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="vazhaikai / urulai vaadhuhal kari வாழைக்காய் / உருளை வாதுகால் கறி">70. Vazhaikai / Urulai Vaadhuhal Kari <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="kose poriyal கோஸ் போரியல்">81. Kose Poriyal <span class="tag">Part 2</span></li></ul>
+  </div>
+  <div class="toc-group">
+    <h3>Tiffin</h3>
+    <ul><li class="toc-item" data-name="appam அப்பம்"><a href="#r14">14. Appam</a></li><li class="toc-item" data-name="vella adai வெல்ல அடை"><a href="#r34">34. Vella Adai</a></li><li class="toc-item" data-name="uppu adai உப்பு அடை"><a href="#r35">35. Uppu Adai</a></li><li class="toc-item" data-name="arisi upma அரிசி உப்புமா"><a href="#r46">46. Arisi Upma</a></li><li class="toc-item" data-name="pidi kozhukattai பிடி கொளுக்கட்டை"><a href="#r47">47. Pidi Kozhukattai</a></li><li class="toc-item" data-name="thavadu adai &amp; ravai adai தவடு அடை &amp; ரவை அடை"><a href="#r48">48. Thavadu Adai &amp; Ravai Adai</a></li><li class="toc-item" data-name="adai அடை"><a href="#r49">49. Adai</a></li><li class="toc-item" data-name="dosai தோசை"><a href="#r50">50. Dosai</a></li><li class="toc-item" data-name="idli இட்லி"><a href="#r51">51. Idli</a></li><li class="toc-item part2" data-name="kanchipuram idli காஞ்சிபுரம் இட்லி">52. Kanchipuram Idli <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="ravai uppuma &amp; semiya uppuma ரவை உப்புமா &amp; சேமியா உப்புமா">53. Ravai Uppuma &amp; Semiya Uppuma <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="kodumai ravai uppuma கோடுமை ரவை உப்புமா">54. Kodumai Ravai Uppuma <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="aval uppuma &amp; puli aval அவல் உப்புமா &amp; புளி அவல்">55. Aval Uppuma &amp; Puli Aval <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="javvarisi uppuma ஜவ்வரிசி உப்புமா">56. Javvarisi Uppuma <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="dosai தோசை">57. Dosai <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="ravai dosai &amp; kodumai ravai dosai ரவை தோசை &amp; கோடுமை ரவை தோசை">58. Ravai Dosai &amp; Kodumai Ravai Dosai <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="navarathna kilali நவரத்தின கிளலி">71. Navarathna Kilali <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="rava kichdi ரவா கிச்சடி">72. Rava Kichdi <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="mutta thattappam maavu [unclear] முட்டை திட்டப்பம் மாவு">74. Mutta Thattappam Maavu [unclear] <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="kuthiravali குத்திரவளி">78. Kuthiravali <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="olai adai ஓலை அடை">85. Olai Adai <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="thiruvadirai maruthu திருவாதிரை மருதது">87. Thiruvadirai Maruthu <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="vella kozhukattai வெல்ல கொழுக்கட்டை">92. Vella Kozhukattai <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="uppu kozhukattai உப்பு கொழுக்கட்டை">93. Uppu Kozhukattai <span class="tag">Part 2</span></li></ul>
+  </div>
+  <div class="toc-group">
+    <h3>Podis &amp; Powders</h3>
+    <ul><li class="toc-item" data-name="sambar thaniya podi (coriander powder for sambar) சாம்பாருக்கு போடும் தனியா பொடி"><a href="#r16">16. Sambar Thaniya Podi (Coriander Powder for Sambar)</a></li><li class="toc-item" data-name="idli podi (avva's) இட்லி பொடி அவ்வா"><a href="#r31">31. Idli Podi (Avva's)</a></li><li class="toc-item part2" data-name="dosai milagai podi தோசை மிளகாய் பொடி">61. Dosai Milagai Podi <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="paruppu podi பருப்பு பொடி">62. Paruppu Podi <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="vaadham podi வாதம் பொடி">79. Vaadham Podi <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="maakkal podi மாக்மல் பொடி">94. Maakkal Podi <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="sathu maavu சத்து மாவு">101. Sathu Maavu <span class="tag">Part 2</span></li></ul>
+  </div>
+  <div class="toc-group">
+    <h3>Pickles, Thuvaiyal &amp; Urugai</h3>
+    <ul><li class="toc-item" data-name="thengai thuvaiyal தேங்காய் துவையல்"><a href="#r36">36. Thengai Thuvaiyal</a></li><li class="toc-item" data-name="masiyal thuvaiyal மசியல் துவையல்"><a href="#r36a">36a. Masiyal Thuvaiyal</a></li><li class="toc-item" data-name="kothamalli, kothi thuvaiyal கொத்தமல்லி, கொத்தி துவையல்"><a href="#r37">37. Kothamalli, Kothi Thuvaiyal</a></li><li class="toc-item" data-name="peerkangai, vengayam, sukki, broccoli thuvaiyal பீர்க்கங்காய், வெங்காயம், சுக்கி, ப்ரோக்கலி துவையல்"><a href="#r38">38. Peerkangai, Vengayam, Sukki, Broccoli Thuvaiyal</a></li><li class="toc-item" data-name="kathari thuvaiyal கத்தரி துவையல்"><a href="#r39">39. Kathari Thuvaiyal</a></li><li class="toc-item" data-name="vazhaithandu thuvaiyal வாழைத்தண்டு துவையல்"><a href="#r40">40. Vazhaithandu Thuvaiyal</a></li><li class="toc-item" data-name="thakkali urugai தக்காளி ஊறுகாய்"><a href="#r44">44. Thakkali Urugai</a></li><li class="toc-item part2" data-name="manathakkalikai urugai &amp; nellikkai urugai மணத்தக்காளிக்காய் ஊருகாய் &amp; நெல்லிக்காய் ஊருகாய்">64. Manathakkalikai Urugai &amp; Nellikkai Urugai <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="nellikkai urugai நெல்லிக்காய் ஊருகாய்">65. Nellikkai Urugai <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="pachadi vagaigal பச்சடி வகைகள்">75. Pachadi Vagaigal <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="vendaikai pachadi வேண்டைக்காய் பச்சடி">80. Vendaikai Pachadi <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="manathakkalikai vaadhuhal மணத்தக்காளிக்கை வாதுகால்">95. Manathakkalikai Vaadhuhal <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="nellikkai vaadhuhal நெல்லிக்காய் வாதுகால்">96. Nellikkai Vaadhuhal <span class="tag">Part 2</span></li></ul>
+  </div>
+  <div class="toc-group">
+    <h3>Snacks &amp; Savouries</h3>
+    <ul><li class="toc-item" data-name="vendhaya urundai வெந்தய உருண்டை"><a href="#r28">28. Vendhaya Urundai</a></li><li class="toc-item" data-name="vendaippoo bonda வெண்டைப்பூ போண்டா"><a href="#r30">30. Vendaippoo Bonda</a></li><li class="toc-item" data-name="surul nada சுருள் நாடா"><a href="#r33">33. Surul Nada</a></li><li class="toc-item part2" data-name="thattai தட்டை">73. Thattai <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="vellaikayam / kose / pirikkili pakoda வெள்ளைகாயம் / கோஸ் / பிரிக்கிலி பகோடா">76. Vellaikayam / Kose / Pirikkili Pakoda <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="ravai vadai / sappaatti kaadi urundai ரவை வடை / சப்பாட்டி காடி உருண்டை">77. Ravai Vadai / Sappaatti Kaadi Urundai <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="jamun pagoda [unclear] ஜமூன்பாகி">82. Jamun Pagoda [unclear] <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="cabbage pagoda கேப்பேஜ் பகோடா">83. Cabbage Pagoda <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="aval mixture அவல் மிக்ஸ்">84. Aval Mixture <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="aval poriyal, nellupori urundai அவல் பொரி, நெல்பொரி உருண்டை">86. Aval Poriyal, Nellupori Urundai <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="vella seedai வெல்ல சீடை">88. Vella Seedai <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="uppu seedai உப்பு சீடை">89. Uppu Seedai <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="kacchikai கச்சிக்காய்">90. Kacchikai <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="thattai தட்டை">97. Thattai <span class="tag">Part 2</span></li><li class="toc-item part2" data-name="verkadalai urundai வேற்கடலை உருண்டை">99. Verkadalai Urundai <span class="tag">Part 2</span></li></ul>
+  </div>
+  </nav>
+  <main><section class="cat"><h2 class="cat-title">Sweets &amp; Kesari</h2>
+  <article class="card" id="r1" data-name="rava kesari ரவா கேசரி">
+    <h2><span class="num">1</span> Rava Kesari <span class="ta">ரவா கேசரி</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>4 tablespoons ghee (to roast cashews)</li><li>6 cashews</li><li>1 tumbler rava (semolina)</li><li>water (to cook the rava)</li><li>sugar (1 tumbler)</li><li>ghee</li><li>cardamom powder</li><li>kesari colour powder (a pinch)</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Place the kadai on the stove, add 4 tablespoons ghee and roast 6 cashews to the right stage; remove and set aside.</li><li>Then add 1 tumbler rava to the kadai, again adding ghee, roast it until it reddens, remove and keep aside in a vessel.</li><li>Pour water into the kadai, and when the water comes to a boil add the rava into it and stir.</li><li>Once the rava is cooked, add 1 tumbler sugar and stir.</li><li>Immediately add the roasted cashews into it and stir.</li><li>Once the sugar is added it will become watery; once it thickens up, add the ghee, mix it in and stir.</li><li>When it reaches the right stage the kesari will gather without sticking to the kadai; then remove from the heat.</li><li>Add cardamom powder, kesari colour powder (dissolved in a little water), stir well and serve hot at the same time.</li></ol></section>
+    </div>
+    
+  </article>
+  <article class="card" id="r2" data-name="semiya kesari சேமியா கேசரி">
+    <h2><span class="num">2</span> Semiya Kesari <span class="ta">சேமியா கேசரி</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>1 spoon ghee (to roast cashews)</li><li>cashews</li><li>1 tumbler semiya (vermicelli)</li><li>water (to cook the semiya)</li><li>1 tumbler sugar</li><li>ghee</li><li>cardamom powder</li><li>kesari colour powder (a pinch)</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Place the kadai on the stove, add 1 spoon ghee and roast the cashews to the right stage; remove and set aside.</li><li>Then add 1 tumbler semiya to the kadai, again adding ghee, roast it until it reddens, remove and keep aside in a vessel.</li><li>Pour water into the kadai, and when the water comes to a boil add the semiya and stir.</li><li>Once the semiya is cooked add 1 tumbler sugar, add the ghee and stir.</li><li>Add the roasted cashews and stir, then add cardamom powder and kesari colour powder.</li><li>When the kesari thickens and gathers without sticking, remove from the heat at the same time and serve.</li></ol></section>
+    </div>
+    <p class="notes">✎ Kichadi (kesari) won't hold if you add too much sugar.</p>
+  </article>
+  <article class="card" id="r3" data-name="aval kesari அவல் கேசரி">
+    <h2><span class="num">3</span> Aval Kesari <span class="ta">அவல் கேசரி</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>aval (flattened rice)</li><li>ghee</li><li>6 cashews</li><li>2 tumblers water</li><li>1 1/2 tumblers sugar</li><li>cardamom powder</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Take a little aval, dry-grind it without water to a fine powder, then add a little ghee to the kadai and roast the powder until it reddens (without burning); remove and set aside.</li><li>While the ground aval is still warm, sieve it into a fine powder.</li><li>Add a little ghee to the kadai and roast 6 cashews to the right stage; remove and set aside.</li><li>Then add 2 tumblers water to the kadai, and when the water comes to a boil add the aval powder and stir.</li><li>Once it is cooked add 1 1/2 tumblers sugar and stir, add a little more ghee, add the cashews, stir the kesari so it gathers without sticking to the kadai.</li><li>Add cardamom powder, stir well and remove from the heat while it is still loose.</li></ol></section>
+    </div>
+    
+  </article>
+  <article class="card" id="r10" data-name="badam cake பாதாம் கேக்">
+    <h2><span class="num">10</span> Badam Cake <span class="ta">பாதாம் கேக்</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>25 badam (almonds)</li><li>1 1/2 measures (madangu) sugar</li><li>1 ladle ghee</li><li>cardamom powder</li><li>asafoetida</li><li>milk</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Soak 25 badam (almonds) in hot water, peel off the skins and grind them to a fine paste in the mixie; grinding with water is enough.</li><li>Measure the volume of the ground paste, take 1 1/2 times that amount of sugar, add 1 ladle ghee, and stir it in a thick kadai.</li><li>While stirring, every now and then add a little more ghee in a ladle.</li><li>When it reaches the right stage it will gather without sticking; then remove from the heat.</li><li>Dissolve the cardamom powder and asafoetida in milk and add it, then stir.</li></ol></section>
+    </div>
+    
+  </article>
+  <article class="card" id="r12" data-name="carrot halwa கேரட் அல்வா">
+    <h2><span class="num">12</span> Carrot Halwa <span class="ta">கேரட் அல்வா</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>1/2 kilo carrot (grated)</li><li>8 cashews</li><li>ghee (1 small ladle, plus more later)</li><li>1 tumbler milk</li><li>1 1/2 tumbler sugar</li><li>raisins</li><li>cardamom powder</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Grate half a kilo of carrot and keep it ready.</li><li>In the kadai roast 8 cashews in ghee, remove and set aside.</li><li>Add one small ladle of ghee, put in the grated carrot, pour in 1 tumbler milk and let it cook.</li><li>Then transfer it to a thick vessel and stir until the milk dries up.</li><li>Add 1 1/2 tumbler sugar; as soon as the sugar goes in it loosens again, so keep stirring.</li><li>So once it loosens, in the thick kadai add a little ghee at a time, and when it starts leaving the sides remove from the heat and add the roasted cashews, raisins and cardamom powder.</li></ol></section>
+    </div>
+    <p class="notes">✎ As soon as the sugar is added the mixture loosens again.</p>
+  </article>
+  <article class="card" id="r19" data-name="thiruvathirai kali திருவாதிரை களி">
+    <h2><span class="num">19</span> Thiruvathirai Kali <span class="ta">திருவாதிரை களி</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>1 1/2 tumblers rice (ஒன்றரை டம்ளர்)</li><li>1/4 ladle kadalai paruppu (chana dal)</li><li>jaggery, 2 times the measure of the broken rice-dal mixture</li><li>1 ladle ghee (ஒரு கரண்டி)</li><li>moong dal (paruppu), about 10 [unclear: spoons]</li><li>grated coconut, about 1 ladle</li><li>cardamom powder</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Roast 1 1/2 tumblers rice and put it onto a plate.</li><li>Roast 1/4 ladle chana dal and the dals as well, then combine the dals and the rice and break them all together into a rava-like coarse texture.</li><li>Measure the broken mixture, and cook it in twice that measure of water [unclear: until cooked through], spreading and letting it set.</li><li>Put twice the measure of jaggery into the kadai, let the jaggery dissolve, strain it a little, then put the jaggery back on the stove and let it boil well until the raw smell of the jaggery goes.</li><li>Pour the cooked broken mixture into the jaggery and stir without letting lumps form.</li><li>Add 1 ladle ghee and stir.</li><li>Separately roast about 10 [unclear: spoons] moong dal to a rava-like coarse texture beforehand and keep it ready.</li><li>When the kali is coming to a thick stage, add the roasted dal, [unclear: roasted paruppu/coconut bits], and about one ladle of grated coconut, and stir the kali.</li></ol></section>
+    </div>
+    <p class="notes">✎ [unclear: a few words in this recipe, including some quantities, are hard to read]</p>
+  </article>
+  <article class="card" id="r29" data-name="sweet karakkari ஸ்வீட் காரக்கறி">
+    <h2><span class="num">29</span> Sweet Karakkari <span class="ta">ஸ்வீட் காரக்கறி</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>2 1/2 cup maavu (rice flour)</li><li>2 1/2 cup kadalai maavu (gram flour)</li><li>50 gm badam (almonds)</li><li>10 gm saarai paruppu</li><li>10 gm ellu vidhai (sesame seeds)</li><li>1/4 cup maida flour</li><li>2 1/2 cup nei alladhu ennai (ghee or oil)</li><li>1/2 cup sugar</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Take the rice flour first and sprinkle a little water over it, working it loosely so it crumbles; mix it together.</li><li>To it add the gram flour, ghee, the powdered (ground) almonds, the saarai paruppu and the sesame seeds — mix everything together well and set the dough aside.</li><li>Then, for the syrup, add about 1/2 spoon water to the sugar and boil it until it reaches the right (one-thread) pagu (syrup) stage.</li><li>Pour this same hot syrup into the maida flour and knead it stiff like a thick dough.</li><li>Heat the ghee or oil in the kadai until hot, keeping it ready on the flame.</li><li>Take the prepared dough and shape it into small balls (urundai).</li><li>Take a wet cloth, lay it like a small spread, place a portion of the almond/syrup dough on it and press it flat like a vadai, then fold the cloth over the top to shape it.</li><li>After about 10 minutes drop these into the hot oil or ghee and fry, turning, until they redden.</li><li>Take out the fried pieces, break them open and roll them in the sugar syrup.</li></ol></section>
+    </div>
+    <p class="notes">✎ [unclear: a few words in the method across the page 18/19 boundary are hard to read; the 'saarai paruppu' is as written]</p>
+  </article>
+  <article class="card" id="r32" data-name="poosani kova halwa பூசணி கோவா அல்வா">
+    <h2><span class="num">32</span> Poosani Kova Halwa <span class="ta">பூசணி கோவா அல்வா</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>2 cups kova (khoya), grated</li><li>4 tablespoon jaggery</li><li>10 to 15 [unclear: unit] ginger powder</li><li>2 pinch cardamom powder</li><li>2 pinch kesari colour powder</li><li>half cup unsweetened kova</li><li>sugar, as much as needed for sweetness</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Put ghee in the kadai, add the grated kova and saute it well.</li><li>Add the kova little by little, along with a little water.</li><li>So the raw smell goes, add the sugar and keep stirring so it does not harden.</li><li>Add the kesari colour powder.</li><li>Add the cardamom powder too.</li><li>In oil or in ghee add a little water, put it in and stir.</li><li>[unclear: this halwa can be made firm/glossy].</li></ol></section>
+    </div>
+    <p class="notes">✎ She notes this is a halwa that can be made to set firm.</p>
+  </article></section><section class="cat"><h2 class="cat-title">Payasams</h2>
+  <article class="card" id="r4" data-name="paal payasam பால் பாயசம்">
+    <h2><span class="num">4</span> Paal Payasam <span class="ta">பால் பாயசம்</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>a little pacharisi (raw rice)</li><li>milk</li><li>sugar</li><li>cardamom powder</li><li>cashews</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Wash a little pacharisi (raw rice) well in the kadai.</li><li>Drain it and add it to a vessel of milk and keep aside.</li><li>Place the vessel over a low flame and let it cook for 20 minutes.</li><li>Then keep the sugar boiling in a little water, and when it is dissolved add the cooked rice and stir, and once it is cooked mix it into the milk mixture.</li><li>Add cardamom powder, and if needed roast a few cashews and add them.</li></ol></section>
+    </div>
+    
+  </article>
+  <article class="card" id="r5" data-name="javvarisi payasam ஜவ்வரிசி பாயசம்">
+    <h2><span class="num">5</span> Javvarisi Payasam <span class="ta">ஜவ்வரிசி பாயசம்</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>6 cashews</li><li>ghee</li><li>javvarisi (sago)</li><li>1/2 litre milk (அரை லிட்டர்)</li><li>1 tumbler sugar</li><li>cardamom powder</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Add a little ghee to the kadai and roast 6 cashews to the right stage; remove and set aside.</li><li>Then add a little more ghee to the kadai, roast the javvarisi (sago) and remove it.</li><li>Add the javvarisi to a vessel of 1/2 litre milk, place it over the stove, let it cook for 10 minutes and stir.</li><li>Then keep 1 tumbler sugar boiling in a little water, boil it down to a syrup and stir, and once it is cooked add it into the payasam.</li><li>Add the cashews and cardamom powder.</li></ol></section>
+    </div>
+    
+  </article>
+  <article class="card" id="r6" data-name="aval payasam அவல் பாயசம்">
+    <h2><span class="num">6</span> Aval Payasam <span class="ta">அவல் பாயசம்</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>6 cashews</li><li>ghee</li><li>1 tumbler aval (flattened rice)</li><li>1/2 litre milk (அரை லிட்டர்)</li><li>1/2 tumbler sugar</li><li>cardamom powder</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Add a little ghee to the kadai and roast 6 cashews; remove and set aside.</li><li>Roast 1 tumbler aval (flattened rice) in a little ghee and remove it.</li><li>Then add the aval to 1/2 litre milk and cook it directly in a thick-bottomed vessel until it is cooked.</li><li>Put 1/2 tumbler sugar to boil in water, dissolve it and boil it to a syrup, then add it into the payasam.</li><li>Add the cashews, cardamom powder, and remove from the heat.</li></ol></section>
+    </div>
+    
+  </article>
+  <article class="card" id="r7" data-name="rava payasam ரவா பாயசம்">
+    <h2><span class="num">7</span> Rava Payasam <span class="ta">ரவா பாயசம்</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>4 cashews</li><li>ghee</li><li>rava (semolina)</li><li>1/2 litre milk (அரை லிட்டர்)</li><li>1 1/2 ladles or 2 ladles sugar</li><li>cardamom powder</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Add a little ghee to the kadai and roast 4 cashews; remove and set aside.</li><li>Take a ladle of rava (semolina), roast it in a little ghee and remove it.</li><li>Then add the rava to 1/2 litre milk and cook it in a thick-bottomed vessel until it is cooked.</li><li>Add 1 1/2 ladles or 2 ladles sugar, add cardamom powder and the cashews, and remove from the heat.</li></ol></section>
+    </div>
+    
+  </article>
+  <article class="card" id="r8" data-name="semiya payasam சேமியா பாயசம்">
+    <h2><span class="num">8</span> Semiya Payasam <span class="ta">சேமியா பாயசம்</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>6 cashews</li><li>ghee</li><li>semiya (vermicelli)</li><li>1/2 litre milk (அரை லிட்டர்)</li><li>1 1/2 ladles sugar</li><li>cardamom (cardamom powder)</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Add a little ghee to the kadai and roast 6 cashews; remove and set aside.</li><li>Take a ladle of semiya (vermicelli), roast it in a little ghee and remove it.</li><li>Then add the semiya to 1/2 litre milk and cook it in a thick-bottomed vessel until it is cooked.</li><li>Put 1 1/2 ladles sugar in water, boil it to a syrup and add it into the payasam.</li><li>Add cardamom and the cashews, and remove from the heat.</li></ol></section>
+    </div>
+    
+  </article>
+  <article class="card" id="r9" data-name="badam kheer பாதாம் கீர்">
+    <h2><span class="num">9</span> Badam Kheer <span class="ta">பாதாம் கீர்</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>12 badam (almonds)</li><li>1 1/2 litres milk</li><li>kesari colour powder (a little)</li><li>1 tumbler sugar</li><li>cardamom powder</li><li>asafoetida</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Soak 12 badam (almonds) in hot water, and once soaked peel off the skins.</li><li>Grind the peeled almonds to a fine paste in the mixie.</li><li>Boil 1 1/2 litres milk until it is thick.</li><li>Add the ground almond paste to the boiled milk, mix in the kesari colour powder, and stir continuously for 4 minutes without letting it stick.</li><li>When the raw smell of the almond paste goes away, remove from the heat and set it down.</li><li>Then add 1 tumbler sugar into it, mix, and add cardamom powder and asafoetida.</li></ol></section>
+    </div>
+    
+  </article>
+  <article class="card" id="r11" data-name="carrot payasam கேரட் பாயசம்">
+    <h2><span class="num">11</span> Carrot Payasam <span class="ta">கேரட் பாயசம்</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>carrots (grated)</li><li>ghee</li><li>1 tumbler milk</li><li>cooked, ground carrot</li><li>1 tumbler sugar</li><li>6 cashews</li><li>cardamom powder</li><li>asafoetida (if needed, dissolved in milk)</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Grate the carrots finely.</li><li>Roast the grated carrot in a little ghee in the kadai and remove it.</li><li>Then add the roasted carrot to 1 tumbler milk and cook it until it is done.</li><li>Once the payasam is removed from the heat, add 1 tumbler sugar, add 6 roasted cashews, add cardamom powder, and if needed dissolve asafoetida in milk and add it, then remove from the heat.</li><li>You can also make it by grinding cashews (முந்திரி) and almonds (பாதாம்) and mixing them with the carrot.</li></ol></section>
+    </div>
+    
+  </article>
+  <article class="card" id="r13" data-name="payatham paruppu vella payasam பயத்தம்பருப்பு வெல்ல பாயசம்">
+    <h2><span class="num">13</span> Payatham Paruppu Vella Payasam <span class="ta">பயத்தம்பருப்பு வெல்ல பாயசம்</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>1 ladle payatham paruppu (moong dal)</li><li>2 tablespoons kadalai paruppu (channa dal)</li><li>2 ladles jaggery</li><li>1 tumbler water (for the jaggery)</li><li>1 spoon raw rice</li><li>4 spoons grated coconut</li><li>cardamom powder</li><li>ghee (4 cashews fried in it)</li><li>4 cashews</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Keep the payatham paruppu (moong dal) and the 2 tablespoons kadalai paruppu (channa dal) separately and roast each in the kadai until the aroma rises.</li><li>Mix both together and cook them soft.</li><li>Put 2 ladles of jaggery into a thick vessel, pour in 1 tumbler water and let it boil.</li><li>Once the jaggery has dissolved, strain it through a strainer to remove grit, then return the strained jaggery to the same vessel and let it boil.</li><li>When the jaggery syrup boils, add the cooked dal.</li><li>Earlier, soak 1 spoon raw rice; grind that rice together with 4 spoons grated coconut, then add it to the payasam and mix.</li><li>Roast 4 cashews in ghee and add them, then add cardamom powder and remove from the heat.</li></ol></section>
+    </div>
+    
+  </article></section><section class="cat"><h2 class="cat-title">Kuzhambu &amp; Sambar</h2>
+  <article class="card" id="r15" data-name="sambar சாம்பார்">
+    <h2><span class="num">15</span> Sambar <span class="ta">சாம்பார்</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>3/4 tumbler thuvaram paruppu (toor dal)</li><li>vegetables of your choice (whatever you want to add)</li><li>1 large lemon-sized tamarind</li><li>1 spoon salt</li><li>1 1/2 spoon sambar powder</li><li>1 spoon rice flour</li><li>ghee</li><li>1 spoon coriander seeds (kothamalli)</li><li>small piece of asafoetida (perungayam)</li><li>1/4 spoon mustard seeds</li><li>2 dry red chillies (varamilagai)</li><li>curry leaves (karuveppilai)</li><li>vendhayam (fenugreek), a little</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>First cook 3/4 tumbler thuvaram paruppu (toor dal) soft.</li><li>Cut whatever vegetables you want to add and keep them ready.</li><li>Dissolve a large lemon-sized tamarind in water and keep the extract ready.</li><li>In the vessel in which you are making the sambar, put the tamarind water, add 1 spoon salt and 1 1/2 spoon sambar powder, bring to a boil; as it just begins to boil, add the vegetables.</li><li>Add the vegetables that take longer to cook (such as drumstick) first into the boiling sambar.</li><li>Once the sambar has boiled a little and the vegetables are cooked, add 1 spoon rice flour mixed in a little water and boil so it thickens.</li><li>Temper in gingelly oil (nallennai): add 1/4 spoon mustard seeds and 2 dried red chillies (varamilagai), and when they splutter add this tempering at the very end into the sambar.</li><li>Garnish the boiling sambar with curry leaves and remove from the heat.</li><li>Note for tender/soft vegetables: if you add tender drumstick or such soft vegetables, add them right at the start.</li><li>Heat the asafoetida, crush it and add it at the start; for vegetables like brinjal, chop the brinjal small first, sauté it in a little oil and only then add it to the sambar.</li></ol></section>
+    </div>
+    <p class="notes">✎ For vegetables that take long to cook (like drumstick), add them into the boiling sambar first. For tender vegetables add them at the very start. Brinjal should be chopped small and sauteed in a little oil before adding. For vegetables, no separate oil for brinjal is needed [unclear: வெங்காய சாம்பாருக்கு தாளிக்க வெங்காயம் அரிசியில்லை — for onion sambar, no rice/tempering is needed].</p>
+  </article>
+  <article class="card" id="r18" data-name="thiruvathirai sambar திருவாதிரை சாம்பார்">
+    <h2><span class="num">18</span> Thiruvathirai Sambar <span class="ta">திருவாதிரை சாம்பார்</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>7 vegetables (must be added): 1. suzhaikkai (snake gourd), 2. paraikkai, 3. sweet potato (sarkkarai vallikizhangu), 4. vazhaikkai (raw banana), 5. avaraikkai (broad beans), 6. seppankizhangu (taro/colocasia), 7. mochai (field beans), 8. kathirikkai (brinjal), 9. urulaikkizhangu (potato), 10. pattani (peas)</li><li>1 azhakku thuvaram paruppu (toor dal)</li><li>2 lemon-sized balls of tamarind (2 எலுமிச்சம்பழ அளவு புளி)</li><li>3 spoons sambar powder</li><li>2 1/2 spoons salt</li><li>mustard seeds (kadugu)</li><li>2 dry red chillies (varamilagai)</li><li>1 fresh green chilli (pachai milagai)</li><li>5 spoons grated coconut (thengai thuruval)</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>For this sambar 7 vegetables must definitely be added; you may add more than that, but do not add too many.</li><li>Do not add lady's finger (vendaikkai) or carrot.</li><li>First cook 1 azhakku thuvaram paruppu (toor dal) soft.</li><li>Dissolve the tamarind (2 lemon-sized) in water and set aside.</li><li>In a thick vessel put a little water, add the cut vegetables and let them cook for a short while.</li><li>Then add 3 spoons sambar powder and 2 1/2 spoons salt mixed in water and let it boil.</li><li>Grind the sambar coconut separately into a paste, add it, garnish, and let it boil with the tempering and the rest.</li><li>Temper mustard seeds, 2 dry red chillies and 1 fresh green chilli and add.</li><li>Grind 5 spoons grated coconut, roast/heat it in oil and add it to the sambar.</li></ol></section>
+    </div>
+    <p class="notes">✎ Seven vegetables are compulsory; you may add more but not too many. Do not add lady's finger or carrot. [Recipe runs onto page 13; remaining tempering/garnish steps continue there.]</p>
+  </article>
+  <article class="card" id="r20" data-name="vathal idumbu வற்றல் இடிம்பு">
+    <h2><span class="num">20</span> Vathal Idumbu <span class="ta">வற்றல் இடிம்பு</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>tamarind, the size of 2 lemons</li><li>1 ladle oil (gingelly/nallennai is good for idumbu)</li><li>mustard seeds, 1/4 spoon</li><li>ulutham paruppu (urad dal), 1 spoon</li><li>kadalai paruppu (chana dal), 1/2 spoon</li><li>milagai vathal (dried chillies), 2</li><li>vendhayam (fenugreek), 1/4 spoon</li><li>asafoetida, a little</li><li>sambar powder, 1 spoon</li><li>salt, 1 1/2 spoons</li><li>rice flour, 1 spoon</li><li>vegetables of choice (manathakkali vathal, sundaikkai vathal, vendaikkai, etc.)</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Only certain vegetables can be used to make this as idumbu. The vegetables that can be added are: ilavaikkai, kathirikkai (brinjal), vendaikkai (okra), murungaikkai (drumstick), vengayam (onion), vendhaya keerai, ponnaganni kathiri, avaraikkai, paharkkai (bitter gourd), seppankizhangu (taro), pachai sundaikkai, manathakkali vathal, sundaikkai vathal. You can make it as a vathal idumbu, or with cooked dal as an appam-style dish.</li><li>Dissolve tamarind the size of 2 lemons and keep it ready as a thick extract.</li><li>Put 1 ladle oil in the kadai, then temper mustard seeds (1/4 spoon), 1 spoon urad dal, 1/2 spoon chana dal, 2 dried chillies, and 1/4 spoon fenugreek separately; roast 1 spoon asafoetida [unclear] in the same oil.</li><li>Roast the vegetables in the oil, then pour in the prepared tamarind water, add 1 1/2 spoons salt, and let it boil.</li><li>Once the vegetables are cooked and the idumbu reaches the right [unclear: stage], dissolve 1 spoon rice flour in a little water, pour it in, and stir.</li><li>If you are using manathakkali vathal, sundaikkai vathal, vengayam, [unclear: sepa], or pachai sundaikkai, temper them while adding, then add the tempering; while adding sambar powder, dissolve it in a little water, pour it in, and stir.</li></ol></section>
+    </div>
+    <p class="notes">✎ You can keep this in the fridge for 2 or 3 days and use it. [unclear: several lines of this dense recipe are difficult to read and the readings are best-guesses]</p>
+  </article>
+  <article class="card" id="r21" data-name="poritha idumbu allathu katti பொரித்த இடிம்பு அல்லது கட்டி">
+    <h2><span class="num">21</span> Poritha Idumbu Allathu Katti <span class="ta">பொரித்த இடிம்பு அல்லது கட்டி</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li> varieties of vegetables (avarai, podalangai, kothavarangai, etc.) as needed</li><li>sambar powder, a little</li><li>thuvaram paruppu (toor dal), 1/2 ladle</li><li>200 grams [unclear: of vegetable]</li><li>ulutham paruppu (urad dal), 1 spoon</li><li>milagai vathal (dried red chillies), 2</li><li>1/4 spoon [unclear]</li><li>8 peppercorns (8 மிளகு)</li><li>2 spoons grated coconut</li><li>asafoetida, a little</li><li>salt, 1/2 spoon</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Idangi (yam), avarai, podalangai, kothavarangai — whichever are needed.</li><li>Whichever vegetable it is, put it in water with a little turmeric and sambar powder and cook it; cook 1/2 ladle toor dal as well.</li><li>For 200 grams of vegetable, this is the right amount.</li><li>Along with the cooked vegetable, put it into a suitable vessel.</li><li>Roast 1 spoon urad dal, 2 dried red chillies, 1/4 spoon [unclear], 8 peppercorns, 2 spoons grated coconut, and a little asafoetida; grind them fine in the mixie and keep ready.</li><li>Add the cooked vegetable, put in 1/2 spoon salt, combine everything and boil; add the cooked dal and let one boil come up, then stir.</li><li>Keep watching so the idumbu does not stick to the bottom of the pan.</li><li>If needed, you can dissolve 1 spoon rice flour in a little water and add it.</li><li>Once the katti is at the right thick stage, in a separate tempering pan put 1 spoon oil, mustard seeds and asafoetida, temper them, and pour over.</li><li>Then remove from the heat.</li></ol></section>
+    </div>
+    <p class="notes">✎ [unclear: a few quantities and ingredient words in this recipe are hard to read]</p>
+  </article>
+  <article class="card" id="r22" data-name="payatham paruppu potta katti பயத்தம் பருப்பு போட்ட கட்டி">
+    <h2><span class="num">22</span> Payatham Paruppu Potta Katti <span class="ta">பயத்தம் பருப்பு போட்ட கட்டி</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>vengaya kathiri (small brinjal), idangi (yam), seppankizhangu (taro), pattani (peas), beans — all together</li><li>payatham paruppu (moong dal), 1 ladle</li><li>2 dried red chillies (2 மிளகாய் வற்றல்)</li><li>1 spoon seeragam (cumin)</li><li>1/2 spoon grated coconut</li><li>1/2 spoon salt</li><li>rice flour, 1/4 spoon</li><li>asafoetida, a little</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Cut together vengaya kathiri, idangi, seppankizhangu, pattani and beans, then chop them.</li><li>Put a ladle of moong dal into a vessel, wash it, and add the vegetables to it; cook it in plenty of water and stir.</li><li>Grind together 2 dried red chillies, 1 spoon cumin and 1/2 spoon grated coconut in the mixie; add to the cooked katti.</li><li>Add 1/2 spoon salt, let the katti boil, and stir.</li><li>Dissolve 1/4 spoon rice flour in a little water in a [unclear: kadai], add a little asafoetida, temper, and pour over.</li><li>For 1/2 kilo of mixed vegetables, this is the right amount.</li><li>You can make this dish with only vengaya kathiri, or with only mixed vegetables, then remove from the heat.</li></ol></section>
+    </div>
+    
+  </article>
+  <article class="card" id="r23" data-name="ilavaikkai poritha idumbu இலவைக்காய் பொரித்த இடிம்பு">
+    <h2><span class="num">23</span> Ilavaikkai Poritha Idumbu <span class="ta">இலவைக்காய் பொரித்த இடிம்பு</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>ilavaikkai (cluster beans/[unclear]), 1 measure</li><li>sambar powder, 1 spoon</li><li>salt, 1 spoon</li><li>asafoetida, a little</li><li>grated coconut, 1 spoon</li><li>thuvaram paruppu (toor dal), 1 ladle (ஒரு கரண்டியளவு)</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Chop the ilavaikkai into one measure, put it into a vessel.</li><li>Add sambar powder and 1 spoon salt; put a little water and let it boil and cook.</li><li>Roast the ilavaikkai; add sambar powder and let the raw smell go, then add 1 spoon grated coconut and 1 spoon asafoetida, grind the mixture [unclear] immediately with a little water, and add to the cooked idumbu.</li><li>Temper with onion (வெங்காயம்), mustard seeds, and urad dal, and pour over.</li><li>Remove from the heat. Dissolve toor dal separately, cook it, and add it to the idumbu and combine.</li></ol></section>
+    </div>
+    <p class="notes">✎ [unclear: ilavaikkai identification and several quantities are difficult to read]</p>
+  </article>
+  <article class="card" id="r24" data-name="pushanikkai katti பூசணிக்காய் கட்டி">
+    <h2><span class="num">24</span> Pushanikkai Katti <span class="ta">பூசணிக்காய் கட்டி</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>pushanikkai (pumpkin), 1 measure</li><li>sambar powder, 1 spoon</li><li>salt, 1 spoon</li><li>thuvaram paruppu (toor dal), 1 1/2 ladles</li><li>grated coconut</li><li>1 spoon soaked rice (ஊறவைத்த ஒரு ஸ்பூன் அரிசி)</li><li>vengayam (onion)</li><li>asafoetida</li><li>rice flour</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Chop the pushanikkai into one measure and put it into a vessel.</li><li>Add sambar powder and 1 spoon salt; put a little water and let it boil and cook.</li><li>Cook 1 1/2 ladles toor dal and stir.</li><li>Roast 1 spoon grated coconut [unclear: with chillies] and 1 spoon soaked rice, grind them; add immediately, along with cooked toor dal, to the cooked pushanikkai and combine in the pan.</li><li>Add vengayam, grated coconut; dissolve rice flour, temper, and pour over.</li><li>Stir.</li><li>Add the roasted and ground tempering, pour over, and remove from the heat.</li></ol></section>
+    </div>
+    <p class="notes">✎ [unclear: several quantities and a few ingredient words are hard to read]</p>
+  </article>
+  <article class="card" id="r25" data-name="kothavarangai katti கொத்தவரங்காய் கட்டி">
+    <h2><span class="num">25</span> Kothavarangai Katti <span class="ta">கொத்தவரங்காய் கட்டி</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>rice, 1 spoon</li><li>thuvaram paruppu (toor dal), 1/2 ladle</li><li>kothavarangai (cluster beans), 200 grams</li><li>sambar powder, 1 spoon</li><li>salt, 1 spoon</li><li>grated coconut, 1/2 spoon</li><li>vengayam (onion)</li><li>asafoetida</li><li>rice flour, 1/2 spoon</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>First soak 1 spoon rice in water.</li><li>Cook 1/2 ladle toor dal and stir.</li><li>Chop 200 grams kothavarangai, put it into a vessel, add sambar powder and 1 spoon salt; put a little water and let it boil and cook.</li><li>[unclear] the vegetable, add sambar powder, and once the raw smell goes, add 1/2 spoon grated coconut and the soaked rice; grind it and add to the pan.</li><li>Add the cooked toor dal, put in vengayam, oil; temper asafoetida and dissolve rice flour, pour over, and stir; remove from the heat.</li><li>When the katti is thick you can add 1/2 spoon oil.</li></ol></section>
+    </div>
+    <p class="notes">✎ [unclear: a few quantities and one or two ingredient words are hard to read]</p>
+  </article>
+  <article class="card" id="r43" data-name="kaya rasam காயரசம்">
+    <h2><span class="num">43</span> Kaya Rasam <span class="ta">காயரசம்</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>naarathangai (citron / narthangai)</li><li>salt</li><li>rasapodi (rasam powder)</li><li>asafoetida</li><li>naarathangai thol (citron peel)</li><li>tamarind</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Wash the naarathangai (citron) thoroughly, peel off the skin, and squeeze out its juice.</li><li>Put the naarathangai (citron) in salted water, add salt, then add rasam powder mixed with a little water, and a little asafoetida; mash and put in.</li><li>Place the kadai on the stove, add oil, temper, and add the squeezed naarathangai (citron) juice.</li><li>Add the rasam ingredients, the soaked tamarind, salt and asafoetida; let it heat and just before it comes to a boil remove from the heat — do not let it boil hard.</li></ol></section>
+    </div>
+    <p class="notes">✎ Add the squeezed naarathangai (citron) skin too; remove from the heat just before it boils, do not let it boil down.</p>
+  </article>
+  <article class="card" id="r45" data-name="puli kichadi (with pachai milagai) புளி கிச்சடி பச்சைமிளகாய்">
+    <h2><span class="num">45</span> Puli Kichadi (with Pachai Milagai) <span class="ta">புளி கிச்சடி பச்சைமிளகாய்</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>oil, 4 spoons</li><li>pachai milagai (green chillies)</li><li>tamarind</li><li>2 whole dried chillies (2 மொட்டை மிளகாய்)</li><li>mustard seeds</li><li>ulutham paruppu (urad dal)</li><li>kadalai paruppu (chana dal)</li><li>vengayam (onion)</li><li>salt</li><li>4 spoons jaggery (வெல்லம்)</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Add a little oil and roast the green chillies to the right stage; soak the tamarind, then crush the 2 whole dried chillies and add them.</li><li>Place the kadai on the stove, add 4 spoons oil, mustard seeds, ulutham paruppu (urad dal), kadalai paruppu (chana dal), and vengayam (onion); temper, then add the slit green chillies and grind to the right stage.</li><li>Add the soaked tamarind to the right stage; add salt and the boiled crushed mixture, and cook to the right stage.</li><li>Once it has thickened, add 4 spoons jaggery and remove from the heat.</li></ol></section>
+    </div>
+    
+  </article></section><section class="cat"><h2 class="cat-title">Kootu, Usili &amp; Curries</h2>
+  <article class="card" id="r17" data-name="pagarkkai pirattal பாகற்காய் பிரட்டல்">
+    <h2><span class="num">17</span> Pagarkkai Pirattal <span class="ta">பாகற்காய் பிரட்டல்</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>pagarkkai (bitter gourd)</li><li>4 spoons oil</li><li>a little salt</li><li>turmeric powder (manjal podi)</li><li>tamarind (1 small lemon-sized)</li><li>1 spoon salt</li><li>1 spoon sambar powder</li><li>1 spoon kadalai paruppu (channa dal)</li><li>2 dry red chillies (varamilagai)</li><li>2 spoons coriander seeds (thaniya)</li><li>1 spoon channa dal</li><li>curry leaves</li><li>1 spoon grated coconut (thengai thuruval)</li><li>jaggery (a little)</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>First cut the pagarkkai (bitter gourd) into small pieces and remove the seeds.</li><li>In the kadai pour 4 spoons oil, add the bitter gourd, a little salt and turmeric powder, and saute until cooked.</li><li>Dissolve 1 small lemon-sized tamarind in water; add 1 spoon salt, 1 spoon sambar powder, then add the sauteed bitter gourd and 1 spoon channa dal.</li><li>Roast separately 2 dry red chillies, 2 spoons coriander seeds, 1 spoon channa dal and curry leaves to the right stage.</li><li>Add 1 spoon grated coconut at the very end and grind together.</li><li>Grind this into a powder or paste in the mixie for the sambar [seasoning].</li><li>Add the ground spice powder and a little jaggery, cook, and saute until the bitter gourd is well coated and dry.</li><li>Whatever sambar you make, first cook the required vegetable soft.</li><li>Brinjal pirattal can be made the same way; for that, do not chop the brinjal into small pieces but add it whole to the sambar.</li><li>For any vegetable, grind and add the spice and make the sambar; this can be made quickly.</li></ol></section>
+    </div>
+    <p class="notes">✎ Brinjal pirattal is made the same way, except the brinjal is added whole (not chopped small). This can be made quickly for any vegetable.</p>
+  </article>
+  <article class="card" id="r26" data-name="beans, kos, vazhaithandu, avarakkai, pudalankai kari பீன்ஸ், கோஸ், வாழைத்தண்டு, அவரைக்காய், புடலங்காய் கறிகள்">
+    <h2><span class="num">26</span> Beans, Kos, Vazhaithandu, Avarakkai, Pudalankai Kari <span class="ta">பீன்ஸ், கோஸ், வாழைத்தண்டு, அவரைக்காய், புடலங்காய் கறிகள்</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>kaal kilo (quarter kilo) measure mixed vegetables (beans, kos (cabbage), vazhaithandu (banana stem), avarakkai (broad beans), pudalankai (snake gourd))</li><li>1 mudi spoon (heaped spoon) oil</li><li>mustard seeds, as needed</li><li>uzhutha paruppu (urad dal), as needed</li><li>1 milagai vatral (dried red chilli)</li><li>manjal podi (turmeric powder), as needed</li><li>1/2 spoon salt</li><li>1 spoon kadalai (chana dal), soaked</li><li>coconut, as needed</li><li>1/2 spoon sugar</li><li>curry leaves</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>In the kadai add 1 heaped spoon oil, and temper mustard seeds, uzhutha paruppu (urad dal) and 1 dried red chilli until they redden.</li><li>Add the finely chopped vegetables, and once their water dries off add turmeric powder and 1/2 spoon salt; stir.</li><li>Cover with a lid holding a little water on top [unclear: மூடி கிரண்டியாய் தண்ணீ போட்டு] and let the vegetables cook.</li><li>Separately, soak 1 spoon chana dal and cook it soft in a little water in a covered vessel until it is done; drain.</li><li>Add the cooked chana dal to the vegetables [unclear: வாணகி], add coconut, put in 1/2 spoon sugar, stir, add curry leaves and stir.</li><li>Remove from the heat.</li></ol></section>
+    </div>
+    <p class="notes">✎ Use about a quarter kilo of vegetables. [unclear: portions of this method are hard to read]</p>
+  </article>
+  <article class="card" id="r27" data-name="paruppu usili பருப்பு உசிலி">
+    <h2><span class="num">27</span> Paruppu Usili <span class="ta">பருப்பு உசிலி</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>1/4 kilo measure of any vegetable (idli? / kothavarai (cluster beans), brinjal, [unclear: meen], vazhaippoo (banana flower)) [unclear: இடலி, கொத்தவரை வெக்காய், மீன், வாழைப்பூ]</li><li>salt, as needed (plus 1/2 spoon for the masala)</li><li>3/4 azhakku rice, soaked in water to one measure [unclear: 3/4 அழக்கு]</li><li>[unclear: naangu] (a few) milagai vatral (dried red chillies)</li><li>a little perungayam podi (asafoetida powder)</li><li>mustard seeds and [unclear: bantha kal / curry leaves]</li><li>8 spoons oil</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Whatever the vegetable, cook it with the needed salt in water by this method.</li><li>Soak about 3/4 azhakku [unclear] rice in water to one measure and keep it soaked for a while.</li><li>For 1/4 kilo measure of vegetable, grind together [unclear: naangu] dried red chillies, 1/2 spoon salt, a little asafoetida powder and mustard seeds [unclear: பந்தகள் வாசி] coarsely along with the soaked rice and the cooked vegetable.</li><li>Cook this ground mixture, then spread it on a [unclear: thattu] plate and let it cool and dry.</li><li>In the kadai heat 8 spoons oil, temper mustard seeds and uzhutha paruppu (urad dal), then add the dried mixture and roast, stirring, until it becomes loose and crumbly [unclear: உதிர் உதிராக நுணுக வரை].</li><li>Then add the cooked vegetable without any water, stir and remove from the heat.</li></ol></section>
+    </div>
+    <p class="notes">✎ [unclear: portions of this recipe are hard to read]</p>
+  </article>
+  <article class="card" id="r41" data-name="pachadi vagaigal பச்சடி வகைகள்">
+    <h2><span class="num">41</span> Pachadi Vagaigal <span class="ta">பச்சடி வகைகள்</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>thengai (coconut)</li><li>kathari (brinjal)</li><li>vengayam (onion)</li><li>mudakkai / sudalakkai (vegetable), as written</li><li>vellaikkai (white pumpkin / chow-chow)</li><li>salt</li><li>tamarind</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>With any vegetable you like — thengai (coconut), kathari (brinjal), onion, mudakkai, vellaikkai — you can make pachadi.</li><li>Cook the vegetable, add salt, add tamarind to the right stage, and temper with mustard.</li><li>Mix the cooked vegetable to a smooth pachadi consistency; for thengai (coconut) pachadi it must be ground smooth.</li></ol></section>
+    </div>
+    
+  </article>
+  <article class="card" id="r42" data-name="mangai pachadi மாங்காய் பச்சடி">
+    <h2><span class="num">42</span> Mangai Pachadi <span class="ta">மாங்காய் பச்சடி</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>maangai (raw mango)</li><li>vellam (jaggery)</li><li>salt</li><li>mustard seeds</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Cut the maangai (raw mango) into thin slices.</li><li>Put the vellam (jaggery) into a small amount of water, place it on the stove, and let it dissolve into a syrup.</li><li>Add the cut maangai (raw mango) to it and boil; add a little salt and let the mango cook down in the syrup.</li><li>When it has come together, temper with mustard and pour it over; serve coarse like a pachadi.</li></ol></section>
+    </div>
+    
+  </article></section><section class="cat"><h2 class="cat-title">Tiffin</h2>
+  <article class="card" id="r14" data-name="appam அப்பம்">
+    <h2><span class="num">14</span> Appam <span class="ta">அப்பம்</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>1 tumbler raw rice</li><li>1 tumbler jaggery</li><li>1 ripe banana</li><li>cardamom powder</li><li>oil (for frying)</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Soak 1 tumbler raw rice in water.</li><li>Once it is well soaked, add 1 tumbler jaggery (powdered) to it and keep it ready.</li><li>Grind the rice fine in the mixie first, then add the jaggery and grind together, and add cardamom powder.</li><li>You can also add 1 ripe banana and grind it in.</li><li>Heat oil in the kadai; when the oil is hot, drop in the batter and turn each appam with a ladle on both sides.</li><li>Keep turning so they cook to the right stage and remove.</li><li>Depending on the vessel you fry the appams in, pour the batter and add more oil as needed.</li><li>Fry the appams to a nice golden and serve.</li></ol></section>
+    </div>
+    <p class="notes">✎ Depending on which vessel you use, pour the batter and add more oil into it as needed.</p>
+  </article>
+  <article class="card" id="r34" data-name="vella adai வெல்ல அடை">
+    <h2><span class="num">34</span> Vella Adai <span class="ta">வெல்ல அடை</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>2 cups rice (arisi)</li><li>jaggery, as needed</li><li>[unclear: dal]</li><li>dry ginger powder, a little</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Soak the rice in water for 1 hour, then drain it, dry it in the sun, and when it is fully dry grind it into flour in the mill.</li><li>Spread that flour out in the sun, dry it well (without it getting damp), and store it in a tin.</li><li>If, by the mill's measure, the flour is a little less wet, the resulting items will not be lumpy and the flour stays good.</li><li>For the vella adai, to that flour add water as needed, and to make it set, take dry ginger that has been dried in the sun a little and ground fine, soak it in water, and add the water of that soaked dry ginger into the flour.</li><li>Mix in water as you do in the mill, place it on the stove and stir.</li><li>When it is cooking, add the jaggery, the dry ginger, and a little salt.</li><li>Take the flour aside little by little, soak the well-ground dry ginger that has been dried in the sun in water, and use that water.</li><li>Take the strained jaggery liquid, mix it gradually into the flour, and when cooking each batch add jaggery, dry ginger and a little salt.</li><li>Mix the flour a little, take the soaked, ground dry ginger water and add only as much water as needed, then cook and remove from the heat.</li><li>If you add too much jaggery the adai will not bind; jaggery's heat keeps the adai from setting properly, so add it carefully.</li><li>From the dried flour 40 adais will come.</li></ol></section>
+    </div>
+    <p class="notes">✎ If too much jaggery is added the adai will not bind, because jaggery's heat prevents it from setting properly; add it carefully. About 40 adais come from the dried flour quantity.</p>
+  </article>
+  <article class="card" id="r35" data-name="uppu adai உப்பு அடை">
+    <h2><span class="num">35</span> Uppu Adai <span class="ta">உப்பு அடை</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>rice flour, the same flour used for vella adai, prepared (made) fresh</li><li>1/2 padi flour per 1 1/2 [unclear: vellam/measure]</li><li>1 [unclear: red chilli] per 1 padi flour</li><li>salt, as needed</li><li>thengai (coconut), grated, a little</li><li>asafoetida, a little</li><li>ghee, for frying</li><li>curry leaves, a few</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>For the uppu adai prepare the same flour as the vella adai; you may make the flour grinding it like the kova/coarse flour, and adding water to that flour is enough.</li><li>If you grind the flour itself it will set well; if not, the flour by the mill measure can be used and the flour will still be fine.</li><li>When the flour is fresh, add asafoetida and a little grated coconut and keep it ready.</li><li>Grind the dry chillies fine, or cut them into pieces.</li><li>Put the kadai on the stove and in it add a little oil, a little dry chilli, asafoetida, and the required flour with grated coconut, mix in and saute it.</li><li>To that, for 1 1/2 measures of flour add 1/2 padi water and mix; for 1 padi flour add 1 dry chilli.</li><li>Add salt as needed to the flour, mix; the flour should not have too much salt.</li><li>When the water boils add the dry chilli and mix in a little flour.</li><li>Mix it with the flour, add curry leaves, mix, and take it aside as a ball; let it cool a little in the tin below and remove.</li><li>From 1 padi of flour 32 adais will come.</li></ol></section>
+    </div>
+    <p class="notes">✎ From 1 padi of flour about 32 adais come. Do not let the flour have too much salt.</p>
+  </article>
+  <article class="card" id="r46" data-name="arisi upma அரிசி உப்புமா">
+    <h2><span class="num">46</span> Arisi Upma <span class="ta">அரிசி உப்புமா</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>1 tumbler pachai arisi (raw rice)</li><li>6 milagai (chillies)</li><li>thuvaram paruppu (toor dal), as needed</li><li>oil</li><li>mustard seeds</li><li>vengayam (onion)</li><li>ulutham paruppu (urad dal)</li><li>kadalai paruppu (chana dal)</li><li>2 milagai (chillies) vatral (dried red chillies)</li><li>1/2 pachai milagai (green chilli)</li><li>1 ladle thengai (coconut)</li><li>salt, as needed</li><li>water</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Break up the pachai arisi (raw rice) in the mixie like rava (semolina) — coarse.</li><li>First take 1 tumbler pachai arisi (raw rice), add 6 chillies, break it like rava (semolina), then add the rice and break.</li><li>If needed you can add 8 chillies and break it; this can be done.</li><li>Place the kadai on the stove, add oil, mustard seeds, vengayam (onion), ulutham paruppu (urad dal), kadalai paruppu (chana dal), 2 milagai (chillies) vatral, and 1/2 pachai milagai (green chilli); temper, then add the salt to the broken-up arisi (rice) mixture and add water.</li><li>Add 1 ladle thengai (coconut) of grated coconut; when the water boils, add the broken arisi (rice), stir well; then add the rice, cover and cook, leave 5 minutes, then remove from the heat.</li></ol></section>
+    </div>
+    
+  </article>
+  <article class="card" id="r47" data-name="pidi kozhukattai பிடி கொளுக்கட்டை">
+    <h2><span class="num">47</span> Pidi Kozhukattai <span class="ta">பிடி கொளுக்கட்டை</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>arisi (raw rice)</li><li>2 tumblers water</li><li>oil</li><li>thengai (coconut)</li><li>mustard seeds</li><li>milagai (chillies)</li><li>ulutham paruppu (urad dal)</li><li>kadalai paruppu (chana dal)</li><li>pachai milagai (green chilli)</li><li>vatral milagai (dried red chilli), 1/2</li><li>salt, as needed</li><li>asafoetida</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>As with the arisi upma, break up the arisi (rice).</li><li>Add 2 tumblers water to the kadai, place on the stove; when it boils add the broken arisi (rice), add a little thengai (coconut), salt, and a little asafoetida; add 1 ladle oil, stir, and remove from the heat.</li><li>Break up the arisi (rice) to the right stage; you can grind it medium-coarse.</li><li>Add oil, ulutham paruppu (urad dal), kadalai paruppu (chana dal), pachai milagai (green chilli) ground, vatral milagai 1/2; temper, add the vegetables and stir to the right stage.</li><li>Pour in 2 tumblers water, add the coconut, add salt to taste, and add the broken arisi (rice); shape into pidi kozhukattai (hand-pressed dumplings) and steam to the right stage.</li></ol></section>
+    </div>
+    <p class="notes">✎ Make sure the dough is held together well when shaping the kozhukattai by hand.</p>
+  </article>
+  <article class="card" id="r48" data-name="thavadu adai &amp; ravai adai தவடு அடை &amp; ரவை அடை">
+    <h2><span class="num">48</span> Thavadu Adai &amp; Ravai Adai <span class="ta">தவடு அடை &amp; ரவை அடை</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>raw rice (pacharisi), broken/cracked coarsely like arisi upma rava</li><li>a fistful (pidi) of kadalai paruppu (chana dal)</li><li>thengai thuruval (grated coconut)</li><li>milagu (pepper), roasted</li><li>1 spoon coconut oil</li><li>kadugu (mustard seeds), for tempering</li><li>about 4 spoons oil (added around the adai while it cooks)</li><li>salt</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Break the raw rice coarsely, like arisi upma rava, and soak a fistful of kadalai paruppu (chana dal) along with it.</li><li>Drain it and let it dry.</li><li>Roast the milagu (pepper); add the thengai thuruval (grated coconut), 1 spoon coconut oil, and a kadugu (mustard seed) tempering, and mix it all in well so it does not gather into a lump.</li><li>Mix it like a thick batter.</li><li>Spread it onto the dosa griddle into thick, even rounds, adding about 4 spoons of oil around the adai while it cooks.</li><li>Once it browns nicely, flip it over and cook the other side until it browns, then remove it.</li><li>Once cooked it should come away crisp and not stick; the inside should be soft.</li><li>Ravai Adai variant: make the same adai with rava and roasted milagu (pepper) only, without adding thengai thuruval (grated coconut).</li></ol></section>
+    </div>
+    <p class="notes">✎ The page heading's first word is hard to read (தவடு/தவலை); the notebook's index lists this as தவடு அடை &amp; ரவை அடை. Several phrases on this page are faint, so some readings are approximate.</p>
+  </article>
+  <article class="card" id="r49" data-name="adai அடை">
+    <h2><span class="num">49</span> Adai <span class="ta">அடை</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>1 padi puzhungalarisi (parboiled rice)</li><li>1 padi pacharisi (raw rice)</li><li>3/4 padi thuvaram paruppu (toor dal)</li><li>1/4 padi kadalai maavu (gram flour)</li><li>1 tablespoon ulutham paruppu (urad dal)</li><li>3 dried red chillies</li><li>1 green chilli</li><li>a pinch of asafoetida</li><li>salt to taste</li><li>onion or banana stem or greens (keerai), chopped fine</li><li>ghee</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Soak together 1 padi puzhungalarisi (parboiled rice), 1 padi pacharisi (raw rice), 3/4 padi thuvaram paruppu (toor dal) and 1/4 padi kadalai maavu (gram flour), and separately soak 1 tablespoon ulutham paruppu (urad dal).</li><li>After everything has soaked for about 1 hour, put the soaked mixture into the mixie along with 3 dried red chillies, 1 green chilli, a pinch of asafoetida and salt to taste, add it to the soaked rice and grind it coarse like rava.</li><li>This batter can be ground in 3 batches, adding the ingredients into the mixie each time.</li><li>The ground batter should not be too loose; chop onion or banana stem or greens fine and add to the batter.</li><li>Pour it onto the dosa griddle, drizzle ghee around the edges and into a hole made in the centre, add a little extra ghee on it, and cook it until crisp.</li></ol></section>
+    </div>
+    <p class="notes">✎ Onion, banana stem (kol), or greens — whichever you like — can be added, chopped fine.</p>
+  </article>
+  <article class="card" id="r50" data-name="dosai தோசை">
+    <h2><span class="num">50</span> Dosai <span class="ta">தோசை</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>3/4 padi puzhungalarisi (parboiled rice)</li><li>3/4 padi pacharisi (raw rice)</li><li>3/4 padi ulutham paruppu (urad dal)</li><li>salt to taste</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Soak 3/4 padi puzhungalarisi (parboiled rice) and 3/4 padi pacharisi (raw rice) together, and soak 3/4 padi ulutham paruppu (urad dal) separately.</li><li>First grind the ulutham paruppu smooth and fluffy for 20 minutes without adding too much water, and take it out into a vessel.</li><li>Then grind the rice, adding enough water, until it is smooth.</li><li>Combine the two together, add salt to taste, and mix into a proper dosa batter consistency.</li><li>Keep this ground batter in the fridge.</li><li>If you grind the batter in the morning, you can keep it in the fridge by evening.</li><li>Take the batter out of the fridge about 1/2 hour before making dosas, and then the dosas will come out well.</li></ol></section>
+    </div>
+    <p class="notes">✎ If you keep the urad dal portion and grind it again later [unclear: with the rest], it also comes out well.</p>
+  </article>
+  <article class="card" id="r51" data-name="idli இட்லி">
+    <h2><span class="num">51</span> Idli <span class="ta">இட்லி</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>3 azhakku puzhungalarisi (parboiled rice)</li><li>1 azhakku ulutham paruppu (urad dal)</li><li>salt to taste</li><li>gingelly oil (for the idli plates)</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Soak 3 azhakku puzhungalarisi (parboiled rice) and set it aside, and soak 1 azhakku ulutham paruppu (urad dal) separately.</li><li>An hour of soaking is enough.</li><li>Grind the urad dal well for 20 minutes separately, then grind the rice and combine the two together.</li><li>Mix them into one, add salt to taste, and mix into a batter thicker than dosa batter consistency.</li><li>Keep the ground batter in the fridge.</li><li>Grease the idli plates well with gingelly oil, pour the batter in to the right level for the idlis, and steam in the cooker without putting the weight on for 10 minutes, then remove.</li></ol></section>
+    </div>
+    
+  </article></section><section class="cat"><h2 class="cat-title">Podis &amp; Powders</h2>
+  <article class="card" id="r16" data-name="sambar thaniya podi (coriander powder for sambar) சாம்பாருக்கு போடும் தனியா பொடி">
+    <h2><span class="num">16</span> Sambar Thaniya Podi (Coriander Powder for Sambar) <span class="ta">சாம்பாருக்கு போடும் தனியா பொடி</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>1 large dry red chilli (varamilagai)</li><li>1 tumbler coriander seeds (thaniya)</li><li>15 dried red chillies (milagai vatral)</li><li>1 small ladle kadalai paruppu (channa dal)</li><li>curry leaves</li><li>1 spoon raw rice or 1 spoon channa dal</li><li>1 tumbler gingelly oil or refined oil</li><li>a little asafoetida (perungayam)</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>In the kadai roast 1 large dry red chilli, 1 tumbler coriander seeds, 15 dried red chillies, 1 small ladle channa dal, curry leaves, and either 1 spoon raw rice or 1 spoon channa dal in 1 tumbler gingelly oil or refined oil until done.</li><li>Once roasted, grind it in the mixie to a fine powder and store it ready in a clean dry jar.</li><li>When you make sambar another day, add 1 spoon of this powder into the boiling sambar.</li><li>Ground this way the sambar will boil up nicely like ghee.</li><li>If needed you can also grind a little coconut and add it to the sambar.</li></ol></section>
+    </div>
+    <p class="notes">✎ If needed, grind a little coconut into the sambar.</p>
+  </article>
+  <article class="card" id="r31" data-name="idli podi (avva's) இட்லி பொடி அவ்வா">
+    <h2><span class="num">31</span> Idli Podi (Avva's) <span class="ta">இட்லி பொடி அவ்வா</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>1 padi rice [unclear: அரிசி 1 கர் மாவு]</li><li>1 cup [unclear: idhal mudi] sarakkonai (toor dal / kadalai paruppu) [unclear: சர்க்கானா இடகால் கி]</li><li>[unclear: இந்திரி பகியசை] urad dal 1/2 cup</li><li>6 [unclear: ஐ ஐ] milagai vatral (dried red chillies) and 1 [unclear: chinch] perungayam (asafoetida)</li><li>3 spoon [unclear: தேமிசன்ஸ்பூன்]</li><li>[unclear: கேதி பருபன் ஒரு திருமண] curry leaves</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Dry-roast the asafoetida; in a little oil [unclear: ஒரு தேமிசன்ஸ்பூன்] roast the [unclear: nadhaya / fenugreek?].</li><li>In that oil roast the urad dal until it reddens [unclear: அதில் இந்திரி பகியசை எடுத்தி கிலிசை எடுக்கவைக்கவும்].</li><li>Roast the rice, dal and dried red chillies [unclear: வறுக்கு கறுக்க அரப்பு அளையும்] separately to the right stage [unclear: இடை கடாயில் போட்டு பாகசே சேர்த்து கிலாயும்].</li><li>Add the asafoetida and curry leaves, roast, then add salt and grind everything together coarsely. [unclear: சீக்கிரம் வறுத்து காய் பின்னு சர்க்கானா சேர்க்கவும்]</li><li>Mix well and store; this powder keeps for some time and is good with idli [unclear: சேர்த்து மிசி நசையவும், ஊசி, அட்டியாக கிலாயி, வைந்து வைச்சிருக்க இந்திரி தீன்மேசிக் தூவி இருக்கயும்].</li></ol></section>
+    </div>
+    <p class="notes">✎ [unclear: this idli podi recipe is written densely and several quantities and words are hard to read]</p>
+  </article></section><section class="cat"><h2 class="cat-title">Pickles, Thuvaiyal &amp; Urugai</h2>
+  <article class="card" id="r36" data-name="thengai thuvaiyal தேங்காய் துவையல்">
+    <h2><span class="num">36</span> Thengai Thuvaiyal <span class="ta">தேங்காய் துவையல்</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>thengai (coconut), grated, a little</li><li>4 milagai vatral (dry red chillies)</li><li>a little asafoetida</li><li>1 spoon ulutham paruppu (urad dal)</li><li>salt, as needed</li><li>a little tamarind</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Grate the coconut and roast it a little.</li><li>Roast 4 dry red chillies, a little asafoetida, and 1 spoon urad dal in the kadai dry (without oil) and remove.</li><li>Add the dry red chillies, salt and a little tamarind, grate and grind in the mixie.</li><li>Then add the coconut and grind.</li><li>After everything is mashed well, add the urad dal and grind coarsely to one or two turns, then take it out.</li></ol></section>
+    </div>
+    <p class="notes">✎ Written as no. 35 in the notebook; the index lists it as 36 (the notebook reuses number 33 earlier).</p>
+  </article>
+  <article class="card" id="r36a" data-name="masiyal thuvaiyal மசியல் துவையல்">
+    <h2><span class="num">36a</span> Masiyal Thuvaiyal <span class="ta">மசியல் துவையல்</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>oil, as needed</li><li>1 vatha milagai (dried red chilli)</li><li>10 milagai (chillies) [unclear: kothamalli/dhania quantity]</li><li>asafoetida, to the right stage</li><li>1 lump tamarind, the size of a gooseberry</li><li>vatral (sun-dried vegetable), as written</li><li>salt, to taste</li><li>asafoetida</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Place the kadai on the stove, add oil, asafoetida, and roast to the right stage; roast 1 vatha milagai and 10 chillies until they reddish, then remove from the heat.</li><li>Soak a gooseberry-sized lump of tamarind in water; when softened, the thuvaiyal will grind smoothly.</li><li>In the mixie grind together the vatral, chillies, asafoetida, salt, and the soaked tamarind, grinding coarsely (kattaiyaaga).</li></ol></section>
+    </div>
+    <p class="notes">✎ Grind to a coarse texture, not too fine. [unclear: several ingredient names on this page are faint] Written as no. 36 in the notebook but not listed in the notebook's index (the index's no. 36 is Thengai Thuvaiyal, which the notebook wrote as no. 35); shown as 36a.</p>
+  </article>
+  <article class="card" id="r37" data-name="kothamalli, kothi thuvaiyal கொத்தமல்லி, கொத்தி துவையல்">
+    <h2><span class="num">37</span> Kothamalli, Kothi Thuvaiyal <span class="ta">கொத்தமல்லி, கொத்தி துவையல்</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>oil, as needed</li><li>milagai (chillies)</li><li>vatral (sun-dried vegetable)</li><li>asafoetida, to the right stage</li><li>kothamalli (coriander leaves)</li><li>vatral</li><li>salt</li><li>tamarind</li><li>asafoetida</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Place the kadai on the stove, add oil, the chillies and vatral, and roast the asafoetida to the right stage; remove from the heat.</li><li>Wash and add the kothamalli (coriander), the vatral, salt, tamarind, and asafoetida; grind everything, then add the kothi (coriander) into the ground mixture.</li><li>Grind the coriander thuvaiyal coarsely (kattaiyaaga).</li></ol></section>
+    </div>
+    <p class="notes">✎ The kothamalli thuvaiyal can be ground coarse.</p>
+  </article>
+  <article class="card" id="r38" data-name="peerkangai, vengayam, sukki, broccoli thuvaiyal பீர்க்கங்காய், வெங்காயம், சுக்கி, ப்ரோக்கலி துவையல்">
+    <h2><span class="num">38</span> Peerkangai, Vengayam, Sukki, Broccoli Thuvaiyal <span class="ta">பீர்க்கங்காய், வெங்காயம், சுக்கி, ப்ரோக்கலி துவையல்</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>any thuvaiyal vegetable (peerkangai / vengayam / sukki / broccoli)</li><li>salt</li><li>milagai (chillies)</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>For all the thuvaiyal vegetables, grind them the same way as said before.</li><li>Whichever vegetable it is, grind that vegetable adding salt and chillies, then grind.</li></ol></section>
+    </div>
+    
+  </article>
+  <article class="card" id="r39" data-name="kathari thuvaiyal கத்தரி துவையல்">
+    <h2><span class="num">39</span> Kathari Thuvaiyal <span class="ta">கத்தரி துவையல்</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>kathari (brinjal)</li><li>tamarind</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Grind the thuvaiyal ingredients; add the kathari (brinjal) and grind to the right stage.</li><li>When it is cooked down, grind it; afterwards add the soaked tamarind along with the cooked kathari (brinjal) and grind together.</li></ol></section>
+    </div>
+    
+  </article>
+  <article class="card" id="r40" data-name="vazhaithandu thuvaiyal வாழைத்தண்டு துவையல்">
+    <h2><span class="num">40</span> Vazhaithandu Thuvaiyal <span class="ta">வாழைத்தண்டு துவையல்</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>vazhaithandu (banana stem), as written</li><li>ulutham paruppu podi (urad dal powder), as needed</li><li>oil, as needed</li><li>vengayam (onion)</li><li>3 vatral milagai (dried red chillies)</li><li>1/2 ladle tamarind</li><li>milagai (chillies)</li><li>asafoetida</li><li>salt</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Place the kadai on the stove, add oil, vengayam (onion), and 3 vatral milagai (dried red chillies); add 1/2 ladle tamarind and roast, then remove from the heat.</li><li>If making it as a powder thuvaiyal, add oil to the kadai and roast it with onion; for a powder version add the powder.</li><li>In the mixie grind together the chillies, vatral, asafoetida, salt and make a powder; add the soaked tamarind and grind without water, grinding coarsely.</li></ol></section>
+    </div>
+    <p class="notes">✎ If making it as a powder thuvaiyal, do it dry; otherwise grind with the soaked tamarind.</p>
+  </article>
+  <article class="card" id="r44" data-name="thakkali urugai தக்காளி ஊறுகாய்">
+    <h2><span class="num">44</span> Thakkali Urugai <span class="ta">தக்காளி ஊறுகாய்</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>5 thakkali (tomatoes), small</li><li>water</li><li>asafoetida</li><li>salt</li><li>oil</li><li>one small dried red chilli</li><li>vengayam (onion)</li><li>ulutham paruppu (urad dal)</li><li>kadalai paruppu (chana dal)</li><li>vatral milagai (dried red chillies)</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Boil 5 small thakkali (tomatoes) in water; add asafoetida and let it cook well.</li><li>Mash the thakkali (tomatoes) with the dal, add salt, and let it sit on the stove; let it heat until it comes to the right stage, then remove from the heat.</li><li>Place the kadai on the stove, add a little oil, mustard seeds, vengayam (onion), ulutham paruppu (urad dal), kadalai paruppu (chana dal), and a little vatral milagai (dried red chilli); temper and pour over the thakkali (tomato) mixture.</li><li>Pour in the rasam stock, stir, and remove from the heat just before it boils.</li></ol></section>
+    </div>
+    <p class="notes">✎ Alternatively, you can make it more simply: temper the thakkali (tomatoes) in the kadai with the tempering ingredients, add the rasam stock, and pour in.</p>
+  </article></section><section class="cat"><h2 class="cat-title">Snacks &amp; Savouries</h2>
+  <article class="card" id="r28" data-name="vendhaya urundai வெந்தய உருண்டை">
+    <h2><span class="num">28</span> Vendhaya Urundai <span class="ta">வெந்தய உருண்டை</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>1/2 cup vendhayam (fenugreek seeds)</li><li>1 cup kadalai paruppu (chana dal)</li><li>1/4 cup nei alladhu dalda (ghee or dalda)</li><li>5 cup sugar</li><li>cardamom powder, as needed [unclear: ஏலக்காய் தூள்]</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Break the chana dal and fenugreek seeds coarsely like rava (semolina).</li><li>In the kadai dry-roast them, then add the ghee and roast the coarse chana dal; add the fenugreek and roast until it reddens.</li><li>Make sugar syrup [unclear: ஆலியம்] and add the sugar; mix in and let it thicken [unclear: கலந்து தூகி பகையவும்].</li><li>When it reaches the right stage [unclear: ஆலிசை இருந்து] add cardamom powder, then take portions and shape into balls (urundai).</li></ol></section>
+    </div>
+    <p class="notes">✎ Add a little extra water for the sugar; if you add it correctly the balls will form easily [unclear: சர்க்கரைக்கு பதில் ஒருதரம் ஸ்பிளால் சேர்த்தால் சுலபமாக உருண்டை செய்யலாம் இது].</p>
+  </article>
+  <article class="card" id="r30" data-name="vendaippoo bonda வெண்டைப்பூ போண்டா">
+    <h2><span class="num">30</span> Vendaippoo Bonda <span class="ta">வெண்டைப்பூ போண்டா</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>250 gram potti kola (banana flower) [unclear: பொட்டை கோலா]</li><li>100 gm pachai payaru (green gram / moong)</li><li>2 spoon thengai (coconut) [unclear: தேங் 2 ஸ்பூன்]</li><li>20 [unclear]</li><li>1/2 spoon manjal podi (turmeric powder)</li><li>2 vasiya vengayam (onions)</li><li>4 pachai milagai (green chillies)</li><li>ginger, a small piece [unclear: எடுமிச்ச பழம் மாதி]</li><li>1 puli (tamarind) the size of a [unclear: thengai vaal / a piece]</li><li>2-3 [unclear: sanai vengaya / shallots]</li><li>1 1/2 thengai thool [unclear: தீங்கம் தூள]</li><li>1/4 cup arisi maavu (rice flour) [unclear: வந்தாமாவு]</li><li>oil, as needed (for deep frying)</li><li>salt, a little</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Chop all the ingredients finely [unclear: தீனிகளில் எல்லா எந்தையும் சிறியதாக நுணுக்கவும்].</li><li>In the kadai heat 1 1/2 spoon oil, temper mustard seeds, then add the finely chopped onions and green chillies and saute, and mix; remove from the heat. [unclear: வாணலியில 1 1/2 ஸ்பூன் எண்ணை வாட்டி தாளித்ததும் கடுகி, சிறிதம் கேட்டி நுணுக்கிய பச்சை மிளகாய், கிலகவிக்கயும்]</li><li>Add salt, then squeeze in the juice of a lemon for a little tartness and take the pan off the heat.</li><li>Grind the coconut finely and keep it aside; to it add the rice flour, the cooked/sauteed chopped mixture and the masala, pour in a little oil and the rice flour, add water and mix into a thick batter the consistency of bonda batter.</li><li>Take portions of the batter, shape them small, and drop spoonfuls into hot oil heated in the kadai.</li><li>Fry, turning, until they turn golden, then remove.</li></ol></section>
+    </div>
+    <p class="notes">✎ [unclear: this recipe spans the page 19/20 boundary and several lines are hard to read]</p>
+  </article>
+  <article class="card" id="r33" data-name="surul nada சுருள் நாடா">
+    <h2><span class="num">33</span> Surul Nada <span class="ta">சுருள் நாடா</span></h2>
+    <div class="cols">
+      <section class="ing"><h4>Ingredients</h4><ul><li>1/4 kilo maida (refined flour)</li><li>oil for deep-frying, as needed</li><li>1/2 cup ghee (நெய்)</li><li>3 tablespoons rice flour (அரிசி மாவு)</li><li>salt, as needed</li></ul></section>
+      <section class="steps"><h4>Method</h4><ol><li>Add salt to the maida, mix in oil, and knead well.</li><li>Mix in the rice flour and water and combine into a dough.</li><li>Keep the dough aside; take it little by little, roll each into round balls and roll out into chapatis.</li><li>Take that chapati and place it [unclear], roll it up, cut it on top into thin strips [unclear], so it forms with the chapati.</li><li>Cut into small pieces and deep-fry in oil; when fried like a noodle in the oil shape it [unclear].</li><li>[unclear: continues on page 22, which is too faded to read reliably]</li></ol></section>
+    </div>
+    <p class="notes">✎ This quantity is for 2 kilos of rice flour [unclear]. The continuation of this recipe on the following page is almost entirely faded and could not be transcribed. Title reading uncertain — the handwriting could be சூள்/சுருள் நாடா; the recipe is a ribbon-pakoda-style fried snack. Most of this recipe's continuation on page 22 is too faded to read.</p>
+  </article></section></main>
+</div>
+<script>
+  const q = document.getElementById('search');
+  q.addEventListener('input', () => {
+    const t = q.value.trim().toLowerCase();
+    document.querySelectorAll('[data-name]').forEach(el => el.classList.toggle('hidden', !!t && !el.dataset.name.includes(t)));
+    document.querySelectorAll('.toc-group, .cat').forEach(g => g.classList.toggle('hidden', !!t && !g.querySelector('[data-name]:not(.hidden)')));
+  });
+</script>
+</body>
+</html>
